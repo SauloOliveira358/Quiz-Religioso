@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#121212">
+    android:background="@drawable/assets_task_01k4fprn8pfr0tjhbamvddp796_1757168935_img_1">
 
     <!-- Título principal -->
 
@@ -80,7 +80,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginBottom="16dp"
         android:text="SHOW DO ANDROID"
-        android:textColor="#3DDC84"
+        android:textColor="#FFFFFF"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/IdTextViewNumeroPergunta"
@@ -95,7 +95,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:text="Pergunta 1 de 10"
-        android:textColor="#B0B0B0"
+        android:textColor="#EBE9E9"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/IdTextViewPergunta"
         app:layout_constraintEnd_toEndOf="parent"
