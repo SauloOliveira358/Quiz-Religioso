@@ -39,20 +39,20 @@ private ImageView imagemBaralho;
                 sorte = random.nextInt(3) + 1;
                 //Carta As 1 carta
                 if(sorte == 1){
-                    imagemBaralho.setImageResource(R.drawable.as_carta);
+                    imagemBaralho.setImageResource(R.drawable.carlosacutiiiii);
 
                 }
 
                 //Cartas 2 e 2 cartas
                 else if(sorte == 2){
-                    imagemBaralho.setImageResource(R.drawable.duas_cartas);
+                    imagemBaralho.setImageResource(R.drawable.mariacarta);
 
 
                 }
 
                 //Carta 3 e 3 cartas
                 else if(sorte ==3){
-                    imagemBaralho.setImageResource(R.drawable.tres_carta);
+                    imagemBaralho.setImageResource(R.drawable.jesuscartinha);
 
 
                 }

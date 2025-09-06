@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#060606"
+    android:background="@drawable/cartadefundo"
     tools:context=".Cartas">
 
     <Button
@@ -21,11 +21,12 @@
 
     <ImageView
         android:id="@+id/IdImagemViewCartas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
+        android:layout_width="357dp"
+        android:layout_height="648dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="92dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/costas_baralho" />
+        app:srcCompat="@drawable/costacartamaior" />
 
 </android.support.constraint.ConstraintLayout>
