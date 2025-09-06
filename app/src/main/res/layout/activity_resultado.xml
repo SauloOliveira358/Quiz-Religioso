@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#121212">
+    android:background="@drawable/pazclaro">
 
     <TextView
         android:id="@+id/idTextoParabens"
@@ -16,7 +16,7 @@
         android:layout_marginBottom="27dp"
         android:gravity="center"
         android:text="Parabéns!"
-        android:textColor="#3DDC84"
+        android:textColor="#FFFAF0"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/idTextoPontuacao"
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="48dp"
         android:text="Sua Pontuação:"
-        android:textColor="#FFFFFF"
+        android:textColor="#FFFAF0"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/idTextoValorPontuacao"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="149dp"
         android:text="0"
-        android:textColor="#3DDC84"
+        android:textColor="#00BFFF"
         android:textSize="64sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/idBotaoReiniciar"
@@ -56,11 +56,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="126dp"
-        android:backgroundTint="#3DDC84"
+        android:backgroundTint="#00BFFF"
         android:text="Reiniciar Quiz"
         android:textColor="#FBFAFA"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idTextoValorPontuacao" />
 

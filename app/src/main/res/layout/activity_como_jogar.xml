@@ -3,8 +3,8 @@
     android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp"
-    android:background="#121212">
+    android:background="@drawable/backgroundplcar"
+    android:padding="24dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,17 +15,17 @@
             android:id="@+id/textTitulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Como Jogar"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="#3DDC84"
+            android:layout_marginBottom="16dp"
             android:gravity="center"
-            android:layout_marginBottom="16dp" />
+            android:text="Como Jogar"
+            android:textColor="#212121"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textDescricao"
             android:layout_width="match_parent"
-            android:layout_height="562dp"
+            android:layout_height="542dp"
             android:lineSpacingExtra="8dp"
             android:text='•O jogo é composto por 10 perguntas de múltipla escolha. \n\n
 •Para cada pergunta, leia com atenção e selecione a resposta correta clicando no CheckBox correspondente.\n\n
@@ -33,8 +33,8 @@
 •Se tiver dúvidas, você pode usar a ajuda disponível durante o jogo.\n\n
 •Use com sabedoria!  O jogo termina quando você responder todas as 10 perguntas.\n\n
 •Ao final, você verá sua pontuação e poderá tentar novamente para melhorar seu desempenho.'
-            android:textColor="#FFFFFF"
-            android:textSize="16sp" />
+            android:textColor="#212121"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/idbtnVoltarCJ"
