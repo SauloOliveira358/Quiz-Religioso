@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Show do Android</string>
+    <string name="voltar">Voltar</string>
+    <string name="placar_de_l_deres">Placar de Líderes</string>
 </resources>
