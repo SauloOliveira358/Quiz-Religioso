@@ -28,182 +28,170 @@ private boolean checkBoxTexto,cartaSelecionou;
 private int pontuação = 0,questoes = 1;
 
     private String [] Perguntas = {
-            "Qual arquivo é responsável por declarar permissões e configurações básicas de um app Android?",      // Pergunta 1
-            "Para alterar o layout visual de uma activity, qual tipo de arquivo é normalmente utilizado?",        // Pergunta 2
-            "Qual linguagem é oficialmente suportada pelo Google para desenvolvimento Android desde 2019?",       // Pergunta 3
-            "Qual classe é usada para criar uma nova tela (interface) em Android?",                               // Pergunta 4
-            "Qual é o propósito do arquivo build.gradle (Module: app)?",                                          // Pergunta 5
-            "Qual método do ciclo de vida de uma Activity é chamado quando ela se torna visível ao usuário?",     // Pergunta 6
-            "O que é um Intent no Android?",                                                                      // Pergunta 7
-            "Qual método usamos para detectar cliques em um botão no Android?",                                   // Pergunta 8
-            "O que faz o método apply() do SharedPreferences.Editor?",                                            // Pergunta 9
-            "Como verificamos se um CheckBox está marcado?",                                                      // Pergunta 10
-            "Como iniciamos o uso do SharedPreferences?",                                                         // Pergunta 11
-            "Qual interface é implementada para usar um OnClickListener?",                                        // Pergunta 12
-            "Qual destes componentes permite ao usuário digitar texto?",                                          // Pergunta 13
-            "Qual a primeira coisa que um progamador Android faz ao abrir o Android Studio?",                     // Pergunta 14
-            "Para que serve o botão \"Forçar Parada\" em um app?",                                                 // Pergunta 15
-            "Qual é o nome da ferramenta oficial para desenvolvimento Android?",                                     //pergunta16
-            "Qual método é chamado quando uma Activity é criada?",                                                  //pergunta17
-            "O que acontece se você colocar o celular no modo avião?",                                               //pergunta18
-            " Quando o Android começa a travar, o que ele está tentando dizer?",                                        //pergunta19
-            "O que é o LinearLayout no Android Studio?",                                                                //pergunta20
-            "Qual método é usado para abrir outra Activity?",                                                            //pergunta21
-            "Qual elemento visual exibe uma lista de itens na tela?",                                                      //pergunta22
-            "Qual componente permite a navegação entre diferentes seções com abas?",                              // Pergunta 22
-            "O que representa a pasta 'res' em um projeto Android?",                                              // Pergunta 23
-            "Qual é a finalidade do arquivo strings.xml?",                                                        // Pergunta 24
-            "Para qual propósito usamos o método findViewById()?",                                                // Pergunta 25
-            "Qual diretório contém os arquivos de layout em um app Android?",                                     // Pergunta 26
-            "O que acontece se não declararmos uma Activity no AndroidManifest.xml?",                             // Pergunta 27
-            "Qual é o propósito da classe RecyclerView?",                                                         // Pergunta 28
-            "Qual desses arquivos define o tema visual do aplicativo?",                                          // Pergunta 29
-            "Qual comando mágico faz uma Activity desaparecer?",                              // Pergunta 30
-            "Onde você deve colocar aquela imagem linda do seu botão?",        // Pergunta 31
-            "Onde você organiza aquele arco-íris de cores?",               // Pergunta 32
-            "Se quiser avisar o usuário com uma mensagem que desaparece sozinha?",             // Pergunta 33
-            "O que é uma Activity no Activity no Android?",                                  //pergunta34
-            "Para que serve o método setContentView()",                                          //pergunta35
-            "Qual o uso do SharedPreferences?",                                         //pergunta 36
-            "Qual componente é mais recomendado para exibir listas grandes?",          //pergunta37
-            "O que é necessário para declarar uma nova Activity?",                      //pergunta38
-            "Qual elemento XML define um botão?",                                       //pergunta39
-            "O que é o Gradle no Android Studio?",                                          //pergunta40
-            "Como se define uma string reutilizável?",                                      //pergunta41
-            "Qual tipo de layout posiciona elementos em sequência vertical ou horizontal?",   //pergunta42
-            "O que é um Toast no Android?",                                          //pergunta43
-            "Como é representada uma interface gráfica no Android?",            //pergunta44
-            "Qual foi o nome da primeira versão pública do Android?",           //pertunta 45
-            "Qual desses nomes de doces nunca foi usado em uma versão oficial do Android?", //pergunta 46
-            "O mascote do Android tem um nome oficial. Qual é?",                        //pergunta47
-            "Qual dessas versões do Android veio primeiro?",                        //pergunta48
-            "Qual é a diferença principal entre Android e iOS?",                        //pergunta49
-            "O Android é baseado em qual núcleo de sistema operacional?",                  // pergunta50
-            "Qual é a loja oficial de aplicativos do Android?"                                                       //pergunta51
-
-
-
-
+            "Quem foi Carlo Acutis e por que é conhecido na Igreja Católica?", //1
+            "Qual é o título dado a Carlo Acutis pela Igreja?",//2
+            "Qual era a grande devoção de Carlo Acutis?",//3
+            "Em que ano Carlo Acutis faleceu?",//4
+            "Qual é a famosa frase de Carlo Acutis sobre a Eucaristia?",//5
+            "Onde o corpo de Carlo Acutis está sepultado?",//6
+            "Qual foi a principal missão de Carlo na internet?",//7
+            "Com quantos anos Carlo Acutis faleceu?",//8
+            "Quem canoniza ou beatifica um fiel na Igreja Católica?",//9
+            "Qual é o sacramento central da vida cristã segundo Carlo Acutis?",//10
+            "Qual é o nome do livro que contém os ensinamentos da Igreja Católica?",//11
+            "O que significa a palavra 'Eucaristia'?",//12
+            "Quem é considerado o primeiro Papa da Igreja Católica?",//13
+            "Quantos mandamentos existem na Lei de Deus?",//14
+            "Quem é a mãe de Jesus Cristo?",//15
+            "O que é a Santíssima Trindade?",//16
+            "Qual oração Jesus nos ensinou?",//17
+            "Qual é o primeiro mandamento?",//18
+            "Qual é o significado do Rosário?",//19
+            "Em qual cidade nasceu Carlo Acutis?",//20
+            "Qual virtude Carlo Acutis mais viveu no cotidiano?",//21
+            "Qual foi o apelido dado a Carlo Acutis?",//22
+            "Em que ano Carlo Acutis foi beatificado?",//23
+            "Qual Papa beatificou Carlo Acutis?",//24
+            "O que significa ser beato?",//25
+            "Qual é o símbolo principal da fé cristã?",//26
+            "Qual é o nome do sacramento do perdão?",//27
+            "Quem instituiu a Eucaristia?",//28
+            "Qual é o dia santo da ressurreição de Cristo?",//29
+            "Quantos evangelhos existem na Bíblia?",//30
+            "Qual foi o milagre mais importante de Jesus?",//31
+            "Quem é o sucessor de Pedro na Igreja?",//32
+            "Qual documento orienta a doutrina católica?",//33
+            "Qual é a profissão de fé do cristão?",//34
+            "O que significa a palavra 'Católica'?",//35
+            "Qual é o livro da Bíblia que fala sobre a criação?",//36
+            "Quem foi o primeiro mártir cristão?",//37
+            "O que é a Confirmação na Igreja Católica?",//38
+            "Qual é a importância da Missa para os católicos?",//39
+            "Carlo Acutis dizia que a Eucaristia é a sua...?",//40
+            "Qual foi a doença que levou Carlo Acutis à morte?",//41
+            "Em que data é celebrado o dia litúrgico de Carlo Acutis?",//42
+            "Quem é o atual Papa?",//43
+            "Qual é o significado de 'Amém'?",//44
+            "Quem foi escolhido por Deus para receber os Dez Mandamentos?",//45
+            "Qual foi o primeiro milagre de Jesus?",//46
+            "O que significa 'Evangelho'?",//47
+            "Quem escreveu a maioria das cartas do Novo Testamento?",//48
+            "Qual é a oração dedicada a Maria, mãe de Jesus?",//49
+            "O que Carlo Acutis chamou de 'a estrada para o céu'?",//50
+            "Qual é a principal característica da vida de um santo?"//51
     };
+
 
     private String[][] Respostas = {
-            {"MainActivity.java","AndroidManifest.xml","strings.xml","styles.xml"},                              // Pergunta 1
-            {".java",".gradle",".xml",".json"},                                                                   // Pergunta 2
-            {"JavaScript","C++","Kotlin", "Python"},                                                              // Pergunta 3
-            {"Intent", "Fragment", "View", "Activity"},                                                           // Pergunta 4
-            {"Armazenar strings do app","Navegação entre activities","Dependências e configurações de build", "Elementos gráficos"}, // Pergunta 5
-            {"onDestroy()", "onStart()", "onCreate()", "onPause()"},                                              // Pergunta 6
-            {"Uma mensagem para ativar componentes","Um tipo de layout", "Uma permissão especial", "Um componente visual"}, // Pergunta 7
-            {"setOnClickListener()","onClick()", "setOnClick()", "detectClick()"},                                // Pergunta 8
-            {"Salva dados de forma síncrona", "Apaga os dados", "Aplica mudanças de forma assíncrona", "Inicia o SharedPreferences"}, // Pergunta 9
-            {"checkbox.isChecked()", "checkbox.isMarked()", "checkbox.getCheck()", "checkbox.isSelected()"},     // Pergunta 10
-            {"loadPreferences()", "startPreferences()", "openFileInput()", "getSharedPreferences()"},             // Pergunta 11
-            {"Runnable", "OnClickListener", "ClickEvent", "ViewManager"},                                         // Pergunta 12
-            {"TextView","Button","EditText","ImageView"},                                                         // Pergunta 13
-            {"Programa um app","Vai tomar um café ate carregar","Reza pro Gradle nao quebrar","Fecha e tenta de novo"}, // Pergunta 14
-            {"Desabafar","Dizer: Chega,já deu por hoje!","Fazer o app pensar sobre seus erros","Todas as anteriores"}, // Pergunta 15
-            {"Eclipse","Android Studio","IntelliJ IDEA","Kotlin"},                                                  //Pergunta16
-            {"onCreate()", "onStart()","onResume()","onDestroy()"},                                                  //pergunta17
-            {"Ele começa a voar","Liga som de turbina","Desativa redes móveis e Wi-Fi","Mostra a janela do avião"}, //pergunta18
-            {"Me dá férias!","Fecha esses 87 aplicativos, por favor!","Atualização chegando…","Você merece um novo celular"},  //pergunta19
-            {"Um tipo de banco de dados","Layout dos elementos em linha vertical ou horizontal","Um componente para animação","Activity especial"},  //pergunta20
-            {"setContentView","startActivity","findViewById","Button"},                                                         //pergunta21
-            {"Intent","EditText","ListaLigada","ListView"},                                                                        //pergunta22
-            {"ViewPager", "RecyclerView", "TabLayout", "NavigationDrawer"},                                       // Pergunta 22
-            {"Contém arquivos executáveis", "Contém recursos como layouts e imagens", "Contém código Java", "Contém configurações do sistema"}, // Pergunta 23
-            {"Armazenar temas", "Guardar imagens", "Centralizar textos usados no app", "Controlar permissões"},   // Pergunta 24
-            {"Buscar arquivos XML", "Encontrar Views no layout", "Acessar banco de dados", "Ativar notificações"}, // Pergunta 25
-            {"res/layout", "src/layout", "layout/res", "drawable/layout"},                                        // Pergunta 26
-            {"Ela funciona normalmente", "Ela não poderá ser executada", "Ela consome mais bateria", "Ela se torna invisível"}, // Pergunta 27
-            {"Mostrar uma imagem", "Exibir itens de forma eficiente em listas", "Executar animações", "Acessar sensores"}, // Pergunta 28
-            {"colors.xml", "styles.xml", "themes.xml", "AndroidManifest.xml"},                                    // Pergunta 29
-            {"vanish()", "dismiss()", "finish()", "abracadabra()"},                                                   // Pergunta 30
-            {"res/raw", "res/drawable", "res/assets", "res/imagesThatIPromiseAreUseful"},                             // Pergunta 31
-            {"colors.xml", "magic_colors.png", "styles.xml", "rainbow_config.xml"},                                   // Pergunta 32
-            {"Toast", "PopUpSurpresa", "Snackbar", "Alarme de incêndio"},                                             // Pergunta 33
-            {"Uma função do sistema Operacional","Um tipo de arquivo xml","Uma tela do aplicativo","Um serviço em segundo plano"},  //pergunta34
-            {"Definir uma orientação da tela","Iniciar uma activity","Conectar o codigo a interface XML","Salvar a tela"},  //pergunta 35
-            {"Armazenar grandes volumes de dados","Salvar configurações simples","Controlar permissão de internet","Renderizar elementos gráficos"},  // pergunta36
-            {"ListView","ScrollView","RecyclerView","LinearLayout"},                                                                                //pergunta 37
-            {"Criar arquivo Java e layout XML","Adicionar permissão no Manifest","Definir no AndroidManifest.xml","nstalar pacote externo"},        //pergunta38
-            {"<TextView>","EditText>","<Button>","<ImageView>"},                                                    //pergunta39
-            {"O que é o Gradle no Android Studio?","Sistema de build","erenciador de eventos","Ferramenta gráfica"},        //pergunta40
-            {"No arquivo layout.xml","Na classe Java","Em AndroidManifest.xml","Em res/values/strings.xml"},   //pergunta41
-            {"RelativeLayout","LinhaLayout","GridLayout","LinearLayout"},                           //pergunta42
-            {"um toque na tela","Uma caixa de diálogo","Um componente visual fixo","Uma mensagem breve na tela"},     //pergunta43
-            {"Com arquivos XML","Com arquivo JSON","RTX 3590","Usando JavaScript"} ,               //pergunta44
-            {"Apple Pie","Cupcake","Donut","Beta"},                                             //pergunta 45
-            {"KitKat","Jelly Bean","Pancake","Ice Cream Sandwich"},                         //pergunta46
-            {"Bugdroid","Droidinho","Andy","Robozinho"},                        //pergunta47
-            {"Lollipop","Marshmallow","Nougat","KitKat"},                       //pergunta48
-            {"Um só funciona com internet","Um é de código aberto, o outro fechado","Android não roda apps","Nenhuma"},                //´pergunta49
-            {"Windows","Linux","MacOS","Unix"},                                             //pergunta50
-            {"Google Play Store","Android Store","Android Market","Galaxy Apps"},               //pergunta51
-
+            {"Um jogador de futebol","Um jovem apaixonado pela Eucaristia","Um sacerdote","Um Papa"},//1
+            {"Venerável","Beato","Padre","Mártir"},//2
+            {"Rosário","Internet","Eucaristia","Viagens"},//3
+            {"2004","2006","2008","2010"},//4
+            {"A Eucaristia é a minha autoestrada para o Céu","Jesus é meu melhor amigo","Maria é minha mãe","Rezar salva a alma"},//5
+            {"Roma","Assis","Milão","Vaticano"},//6
+            {"Criar jogos","Evangelizar online","Fazer vídeos","Estudar programação"},//7
+            {"12 anos","15 anos","17 anos","18 anos"},//8
+            {"O Papa","O Bispo","O Cardeal","O Arcebispo"},//9
+            {"Batismo","Crisma","Eucaristia","Unção dos Enfermos"},//10
+            {"Bíblia","Catecismo da Igreja Católica","Missal Romano","Código de Direito Canônico"},//11
+            {"Reunião","Memória","Ação de Graças","Adoração"},//12
+            {"São Paulo","São Pedro","São João","Santo Agostinho"},//13
+            {"5","7","10","12"},//14
+            {"Santa Ana","Maria","Isabel","Marta"},//15
+            {"Pai, Filho e Espírito Santo","Jesus, Maria e José","Fé, Esperança e Caridade","Anjos e Santos"},//16
+            {"Ave Maria","Glória","Pai-Nosso","Credo"},//17
+            {"Não matarás","Amar a Deus sobre todas as coisas","Honrar pai e mãe","Guardar domingos"},//18
+            {"Um símbolo da cruz","Meditação dos mistérios da vida de Cristo","Um salmo","Um hino"},//19
+            {"Assis","Roma","Milão","Nápoles"},//20
+            {"Caridade","Alegria","Humildade","Obediência"},//21
+            {"Geek de Deus","Influenciador Católico","Ciberapóstolo","Apóstolo da Eucaristia"},//22
+            {"2018","2019","2020","2021"},//23
+            {"Papa Francisco","Papa Bento XVI","Papa João Paulo II","Papa Paulo VI"},//24
+            {"Título para quem é considerado santo localmente","Título de quem morreu em martírio","Título dado antes da canonização","Nome dos Papas"},//25
+            {"A Bíblia","O Crucifixo","O Rosário","O Evangelho"},//26
+            {"Confirmação","Batismo","Reconciliação","Ordem"},//27
+            {"São Paulo","Jesus Cristo","Pedro","João"},//28
+            {"Natal","Quaresma","Páscoa","Pentecostes"},//29
+            {"2","3","4","5"},//30
+            {"Multiplicação dos pães","Transformar água em vinho","Ressurreição","Cura de leprosos"},//31
+            {"Cardeal","Bispo","Papa","Diácono"},//32
+            {"Catecismo da Igreja Católica","Encíclica","Bíblia","Evangelho"},//33
+            {"Ave-Maria","Credo","Glória","Pai-Nosso"},//34
+            {"Universal","Santidade","Deus","Sagrado"},//35
+            {"Gênesis","Êxodo","Levítico","Salmos"},//36
+            {"Paulo","Pedro","Estevão","Tiago"},//37
+            {"Casamento","Crisma","Eucaristia","Ordem"},//38
+            {"Lembrar de Maria","Encontrar amigos","Presença real de Cristo","Unir a comunidade"},//39
+            {"Mãe","Namorada","Autoestrada","Porta"},//40
+            {"Leucemia","Gripe","Acidente","Covid"},//41
+            {"5 de maio","10 de outubro","15 de agosto","25 de dezembro"},//42
+            {"Papa João Paulo II","Papa Bento XVI","Papa Leão XIV","Papa Francisco"},//43
+            {"Assim seja","Aleluia","Glória","Hosana"},//44
+            {"Moisés","Abraão","Jacó","Davi"},//45
+            {"Andar sobre as águas","Multiplicação dos pães","Transformar água em vinho","Cura do cego"},//46
+            {"Mensagem","Boa notícia","História","Oração"},//47
+            {"São Lucas","São Paulo","São Pedro","São Tiago"},//48
+            {"Glória","Pai-Nosso","Ave-Maria","Credo"},//49
+            {"Rosário","Eucaristia","Jejum","Confissão"},//50
+            {"Riqueza","Caridade","Fé","Obediência"}//51
     };
+
 
     private int [] respostaCerta = {
-            1,  // Pergunta 1
-            2,  // Pergunta 2
-            2,  // Pergunta 3
-            3,  // Pergunta 4
-            2,  // Pergunta 5
-            1,  // Pergunta 6
-            0,  // Pergunta 7
-            0,  // Pergunta 8
-            2,  // Pergunta 9
-            0,  // Pergunta 10
-            3,  // Pergunta 11
-            1,  // Pergunta 12
-            2,  // Pergunta 13
-            0,  // Pergunta 14
-            3,   // Pergunta 15
-            1,   //Pergunta16
-            0,  //pergunta17
-            2,  //pergunta18
-            1,  //pergunta19
-            1,   //pergunta20
-            1, //pergunta21
-            3, //pergunta22
-            2,  // Pergunta 22
-            1,  // Pergunta 23
-            2,  // Pergunta 24
-            1,  // Pergunta 25
-            0,  // Pergunta 26
-            1,  // Pergunta 27
-            1,  // Pergunta 28
-            2,   // Pergunta 29
-            2,  // Pergunta 30
-            1,  // Pergunta 31
-            0,  // Pergunta 32
-            0,   // Pergunta 33
-            2,   // pergunta34
-            2, // pergunta 35
-            1, //pergunta 36
-            2,  //pergunta37
-            2,  //pergunta38
-            2, //pergunta39
-            1, // pergunta 40
-            3, //pergunta41
-            3,   //pergunta42
-            3, //pergunta43
-            0,  //pergunta44
-            1,  //pergunta45
-            2,   //pergunta46
-            0,   //pergunta47
-            3,   //pergunta48
-            1,     //pergunta49
-            1,    //perguntas50
-            0,   //pergunta51
-
-
-
-
-
-
-
+            1, // Carlo Acutis ,1
+            1, // Beato , 2
+            2, // Eucaristia ,3
+            1, // 2006 ,4
+            0, // A Eucaristia é a minha autoestrada para o Céu ,5
+            1, // Assis , 6
+            1, // Evangelizar online ,7
+            2, // 15 anos ,8
+            0, // Papa , 9
+            2, // Eucaristia , 10
+            1, // Catecismo , 11
+            2, // Ação de Graças , 12
+            1, // São Pedro ,13
+            2, // 10 mandamentos ,14
+            1, // Maria ,15
+            0, // Trindade ,6
+            2, // Pai-Nosso ,17
+            1, // Amar a Deus ,18
+            1, // Mistérios da vida de Cristo ,19
+            2, // Milão ,20
+            2, // Humildade ,21
+            2, // Ciberapóstolo ,22
+            2, // 2020 ,23
+            0, // Papa Francisco,24
+            2, // Título antes da canonização ,25
+            1, // Crucifixo ,26
+            2, // Reconciliação ,27
+            1, // Jesus Cristo ,28
+            2, // Páscoa ,29
+            2, // 4 evangelhos ,30
+            2, // Ressurreição ,31
+            2, // Papa ,32
+            0, // Catecismo ,33
+            1, // Credo ,34
+            0, // Universal ,35
+            0, // Gênesis ,36
+            2, // Estevão ,37
+            1, // Crisma ,38
+            2, // Eucaristia ,39
+            2, // Autoestrada ,40
+            0, // Leucemia ,41
+            1, // 10 de outubro ,42
+            2, // Papa Leão XIV ,43
+            0, // Assim seja ,44
+            0, // Moisés ,45
+            2, // Transformar água em vinho ,46
+            1, // Boa notícia ,47
+            1, // São Paulo ,48
+            2, // Ave-Maria ,49
+            1, // Eucaristia ,50
+            2  // Fé ,51
     };
-private int respostaSelecionada;
+
+    private int respostaSelecionada;
 private int perguntaAtual = 0;
 private int numeroPerguntas = 10;
 private int cartasRecebidas;
