@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#121212"
+    android:background="@drawable/BackGround"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="24dp">
@@ -14,7 +14,7 @@
         android:gravity="center"
         android:paddingBottom="24dp"
         android:text="Quiz Android"
-        android:textColor="#3DDC84"
+        android:textColor="#212121"
         android:textSize="32sp"
         android:textStyle="bold" />
 
@@ -25,7 +25,7 @@
         android:gravity="center"
         android:paddingBottom="32dp"
         android:text="Desafie seu conhecimento!"
-        android:textColor="#B0B0B0"
+        android:textColor="#424242"
         android:textSize="18sp" />
 
     <!-- Botões de ação -->
@@ -34,9 +34,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="#3DDC84"
+        android:backgroundTint="#00C853"
         android:text="Iniciar Quiz"
-        android:textColor="#121212"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <Button
@@ -44,9 +45,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="#2196F3"
+        android:backgroundTint="#5DADE2"
         android:text="Placar de Líderes"
-        android:textColor="#121212"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <Button
@@ -54,27 +56,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="#FFCA28"
+        android:backgroundTint="#FB8C00"
         android:text="Como Jogar"
-        android:textColor="#121212"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <Button
         android:id="@+id/idBtnSair"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#EF5350"
+        android:backgroundTint="#D32F2F"
         android:text="Sair"
-        android:textColor="#121212"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <!-- Rodapé -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:gravity="center"
-        android:text="Versão 1.0"
-        android:textColor="#B0BEC5"
-        android:textSize="12sp" />
 </LinearLayout>
