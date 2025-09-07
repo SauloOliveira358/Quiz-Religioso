@@ -13,22 +13,23 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingBottom="24dp"
-        android:text="Quiz Android"
+        android:text="Quiz Religioso"
         android:textColor="#212121"
         android:textSize="32sp"
         android:textStyle="bold" />
 
     <!-- Subtítulo -->
+
+    <!-- Botões de ação -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingBottom="32dp"
         android:text="Desafie seu conhecimento!"
-        android:textColor="#424242"
+        android:textColor="#170707"
         android:textSize="18sp" />
 
-    <!-- Botões de ação -->
     <Button
         android:id="@+id/idBtnIniciar"
         android:layout_width="match_parent"

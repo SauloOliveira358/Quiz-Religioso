@@ -33,7 +33,7 @@
         android:minHeight="50dp"
         android:padding="12dp"
         android:textColor="#FFFFFF"
-        android:textColorHint="#424242"
+        android:textColorHint="#181414"
         android:textColorLink="#5DADE2" />
 
     <Button
