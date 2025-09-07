@@ -2,4 +2,6 @@
     <string name="app_name">Quiz Religioso</string>
     <string name="voltar">Voltar</string>
     <string name="placar_de_l_deres">Placar de Líderes</string>
+    <string name="como_jogar">Como Jogar</string>
+    <string name="o_jogo_composto_por_10_perguntas_de_m_ltipla_escolha_n_n_para_cada_pergunta_leia_com_aten_o_e_selecione_a_resposta_correta_clicando_no_checkbox_correspondente_n_n_ap_s_escolher_sua_resposta_clique_no_bot_o_continuar_para_passar_para_a_pr_xima_pergunta_n_n_se_tiver_d_vidas_voc_pode_usar_a_ajuda_dispon_vel_durante_o_jogo_n_n_use_com_sabedoria_o_jogo_termina_quando_voc_responder_todas_as_10_perguntas_n_n_ao_final_voc_ver_sua_pontua_o_e_poder_tentar_novamente_para_melhorar_seu_desempenho">•O jogo é composto por 10 perguntas de múltipla escolha. \n\n •Para cada pergunta, leia com atenção e selecione a resposta correta clicando no CheckBox correspondente.\n\n •Após escolher sua resposta, clique no botão Continuarpara passar para a próxima pergunta.\n\n •Se tiver dúvidas, você pode usar a ajuda disponível durante o jogo.\n\n •Use com sabedoria! O jogo termina quando você responder todas as 10 perguntas.\n\n •Ao final, você verá sua pontuação e poderá tentar novamente para melhorar seu desempenho.</string>
 </resources>
