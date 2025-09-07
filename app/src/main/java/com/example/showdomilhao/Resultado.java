@@ -53,13 +53,13 @@ public class Resultado extends AppCompatActivity {
         Pontuacao.salvarPontuacao(Resultado.this, nome, pontuacao);
         // Se não receber nada, assume 0 como valor padrão
         if(pontuacao <=4){
-            parabens.setText("Vergon da profisson!");
+            parabens.setText("Ore e estude mais, você pode melhorar.");
         }else if (pontuacao >4 && pontuacao <= 6){
-            parabens.setText(parabens.getText() +", Tá na média");
+            parabens.setText(parabens.getText() +", O conhecimento vai crescendo aos poucos.");
         }else if (pontuacao >= 7 && pontuacao <=9){
-            parabens.setText(parabens.getText() + ", Tá sabendo em");
+            parabens.setText(parabens.getText() + ", Você está iluminado pela Palavra!");
         }else if (pontuacao == 10){
-            parabens.setText(parabens.getText() + ", Que isso hackeou o quiz");
+            parabens.setText(parabens.getText() + ", Você é exemplo de sabedoria e devoção.");
         }
 
 
