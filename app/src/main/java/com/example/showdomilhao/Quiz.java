@@ -238,27 +238,34 @@ public class Quiz extends AppCompatActivity {
 
         // Próxima pergunta
         proxima_Pergunta.setOnClickListener(v -> {
-            if (respostaSelecionada < 0) {
+            int checkedId = rgRespostas.getCheckedRadioButtonId();
+            if (checkedId == -1) {
                 Toast.makeText(this, "Selecione uma alternativa!", Toast.LENGTH_SHORT).show();
                 return;
             }
-            acertoErro();
+
+            // Descobre o índice 0..3 a partir do RadioButton marcado
+            View marcado = findViewById(checkedId);
+            int indiceSelecionado = rgRespostas.indexOfChild(marcado);
+
+            // Usa esse índice para validar
+            if (indiceSelecionado == respostaCerta[perguntaAtual]) {
+                pontuacao++;
+            }
+
             numeroPerguntas--;
-            respostaSelecionada = -1;
 
             if (numeroPerguntas > 0) {
                 carregarPergunta();
                 if (numeroPerguntas == 1) proxima_Pergunta.setText("Finalizar");
             } else {
                 SharedPreferences preferences = getSharedPreferences(ARQUIVO_USUARIO, 0);
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putInt(PONTUACAO, pontuacao);
-                editor.apply();
-                Intent intent2 = new Intent(getApplicationContext(), Resultado.class);
-                startActivity(intent2);
+                preferences.edit().putInt(PONTUACAO, pontuacao).apply();
+                startActivity(new Intent(getApplicationContext(), Resultado.class));
                 finish();
             }
         });
+
 
         // Cartas (eliminar alternativas erradas)
         cartas.setOnClickListener(v -> {
@@ -290,12 +297,20 @@ public class Quiz extends AppCompatActivity {
                     int i = random.nextInt(4);
                     if (!desativadas[i]) {
                         RadioButton alvo = getRadioByIndex(i);
+
+                        // Se a alternativa a eliminar está marcada, desmarque tudo
+                        if (alvo.isChecked()) {
+                            rgRespostas.clearCheck();       // 🔑 limpa seleção
+                            // respostaSelecionada = -1;    // (se mantiver a variável)
+                        }
+
                         alvo.setEnabled(false);
                         alvo.setAlpha(0.5f);
                         desativadas[i] = true;
                         eliminadas++;
                     }
                 }
+
             }
         }
     }
@@ -312,11 +327,15 @@ public class Quiz extends AppCompatActivity {
 
     // Carrega próxima pergunta aleatória, sem repetir
     private void carregarPergunta() {
-        // Reset de estado visual
+        // Reset visual/estado SEMPRE que entrar em nova pergunta
         habilitarTodas(true);
         setAlphaTodas(1f);
-        rgRespostas.clearCheck();
-        numerodaPergunta.setText("Pergunta " + (Perguntas.length - indicesDisponiveis.size() + 1) + " de 10");
+        rgRespostas.clearCheck();        // 🔑 nada marcado
+        // respostaSelecionada = -1;     // (apenas se você mantiver essa variável)
+
+        numerodaPergunta.setText(
+                "Pergunta " + (Perguntas.length - indicesDisponiveis.size() + 1) + " de 10"
+        );
 
         if (indicesDisponiveis.size() == 0) return;
 
@@ -325,17 +344,16 @@ public class Quiz extends AppCompatActivity {
         perguntaAtual = indicesDisponiveis.get(posicao);
         indicesDisponiveis.remove(posicao);
 
-        // Seta textos
         pergunta.setText(Perguntas[perguntaAtual]);
         rbResposta1.setText(Respostas[perguntaAtual][0]);
         rbResposta2.setText(Respostas[perguntaAtual][1]);
         rbResposta3.setText(Respostas[perguntaAtual][2]);
         rbResposta4.setText(Respostas[perguntaAtual][3]);
 
-        // Reabilita botão de cartas a cada pergunta
         cartas.setClickable(true);
         cartas.setAlpha(1f);
     }
+
 
     private void habilitarTodas(boolean enabled) {
         rbResposta1.setEnabled(enabled);
