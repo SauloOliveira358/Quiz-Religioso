@@ -7,149 +7,123 @@
     android:background="@drawable/pazescu">
 
     <!-- Título principal -->
-
-    <CheckBox
-        android:id="@+id/idCheckboxResposta1"
-        style="@style/Widget.AppCompat.CompoundButton.CheckBox"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="22dp"
-        android:buttonTint="#00BFFF"
-        android:text="CheckBox"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/IdCheckboxResposta2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/IdBtnCartas" />
-
-    <CheckBox
-        android:id="@+id/IdCheckboxResposta4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="50dp"
-        android:buttonTint="#00BFFF"
-        android:text="CheckBox"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/IdBtnProximaPergunta"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/IdCheckboxResposta3" />
-
-    <CheckBox
-        android:id="@+id/IdCheckboxResposta2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="31dp"
-        android:buttonTint="#00BFFF"
-        android:text="CheckBox"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/IdCheckboxResposta3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idCheckboxResposta1" />
-
-    <CheckBox
-        android:id="@+id/IdCheckboxResposta3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="37dp"
-        android:buttonTint="#00BFFF"
-        android:text="CheckBox"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/IdCheckboxResposta4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/IdCheckboxResposta2" />
-
     <TextView
-        android:id="@+id/IdTextViewShowdoAndroid"
+        android:id="@+id/tvTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="16dp"
         android:text="SHOW DO ANDROID"
-        android:textColor="#FFFFFF"
+        android:textColor="#3DDC84"
         android:textSize="28sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/IdTextViewNumeroPergunta"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp"/>
 
     <!-- Número da pergunta -->
     <TextView
-        android:id="@+id/IdTextViewNumeroPergunta"
+        android:id="@+id/tvNumeroPergunta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
         android:text="Pergunta 1 de 10"
-        android:textColor="#EBE9E9"
+        android:textColor="#B0B0B0"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/IdTextViewPergunta"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitulo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/IdTextViewShowdoAndroid" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
 
     <!-- Pergunta -->
     <TextView
-        android:id="@+id/IdTextViewPergunta"
+        android:id="@+id/IdtvPergunta"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="60dp"
-        android:gravity="center"
         android:text="Aqui vai a pergunta"
         android:textColor="#FFFFFF"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/IdBtnCartas"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/tvNumeroPergunta"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/IdTextViewNumeroPergunta" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="24dp"/>
 
-    <!-- Grupo de respostas -->
-
-    <!-- Botão Próxima -->
-
+    <!-- Botão Cartas -->
     <Button
-        android:id="@+id/IdBtnProximaPergunta"
+        android:id="@+id/btnCartas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="34dp"
-        android:backgroundTint="#00BFFF"
-        android:text="Próxima"
-        android:textColor="#121212"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/IdCheckboxResposta4" />
-
-    <Button
-        android:id="@+id/IdBtnCartas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:backgroundTint="#00BFFF"
         android:text="Cartas"
         android:textColor="#121212"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/idCheckboxResposta1"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="20sp"
+        android:backgroundTint="#3DDC84"
+        app:layout_constraintTop_toBottomOf="@id/IdtvPergunta"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/IdTextViewPergunta" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Grupo de respostas (somente uma pode ser marcada) -->
+    <RadioGroup
+        android:id="@+id/rgRespostas"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/btnCartas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp">
+
+        <RadioButton
+            android:id="@+id/rbResposta1"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:buttonTint="#3DDC84"
+            android:text="Resposta A"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/rbResposta2"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:buttonTint="#3DDC84"
+            android:text="Resposta B"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/rbResposta3"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:buttonTint="#3DDC84"
+            android:text="Resposta C"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/rbResposta4"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:buttonTint="#3DDC84"
+            android:text="Resposta D"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+    </RadioGroup>
+
+    <!-- Botão Próxima Pergunta -->
+    <Button
+        android:id="@+id/btnProxima"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Próxima"
+        android:textColor="#121212"
+        android:textSize="20sp"
+        android:backgroundTint="#3DDC84"
+        app:layout_constraintTop_toBottomOf="@id/rgRespostas"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="24dp"/>
+
 
 </android.support.constraint.ConstraintLayout>

@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,11 +23,18 @@ import java.util.Random;
 
 
 public class Quiz extends AppCompatActivity {
-private TextView bemVindo,pergunta,numerodaPergunta;
-private CheckBox resposta1,resposta2,resposta3,resposta4;
-private Button proxima_Pergunta, cartas;
-private boolean checkBoxTexto,cartaSelecionou;
-private int pontuação = 0,questoes = 1;
+    private TextView  bemVindo ,pergunta, numerodaPergunta;
+    private RadioGroup rgRespostas;
+    private RadioButton rbResposta1, rbResposta2, rbResposta3, rbResposta4;
+    private Button proxima_Pergunta, cartas;
+
+    // Estado
+    private boolean cartaSelecionou;
+    private int pontuacao = 0, questoes = 1;
+    private int respostaSelecionada = -1; // 0..3
+    private int perguntaAtual = 0;
+    private int numeroPerguntas = 10;
+    private int cartasRecebidas;
 
     private String [] Perguntas = {
             "Quem foi Carlo Acutis e por que é conhecido na Igreja Católica?", //1
@@ -191,116 +200,72 @@ private int pontuação = 0,questoes = 1;
             2  // Fé ,51
     };
 
-    private int respostaSelecionada;
-private int perguntaAtual = 0;
-private int numeroPerguntas = 10;
-private int cartasRecebidas;
-
-
-    private ArrayList<Integer> indicesDisponiveis = new ArrayList<>();
-
+    private final ArrayList<Integer> indicesDisponiveis = new ArrayList<>();
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Remove a barra de título (ActionBar)
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
+        // Esconde a ActionBar (opcional)
+        if (getSupportActionBar() != null) getSupportActionBar().hide();
+
         setContentView(R.layout.activity_quiz);
-        bemVindo = findViewById(R.id.IdTextViewShowdoAndroid);
-        pergunta = findViewById(R.id.IdTextViewPergunta);
-        resposta1 = findViewById(R.id.idCheckboxResposta1);
-        resposta2 = findViewById(R.id.IdCheckboxResposta2);
-        resposta3 = findViewById(R.id.IdCheckboxResposta3);
-        resposta4 = findViewById(R.id.IdCheckboxResposta4);
-        numerodaPergunta = findViewById(R.id.IdTextViewNumeroPergunta);
 
-        cartas = findViewById(R.id.IdBtnCartas);
-        //adicionar os indices disponiveis
-        for (int i = 0; i < Perguntas.length; i++) {
-            indicesDisponiveis.add(i);
-        }
-        carregar_Perguntas();
-        proxima_Pergunta = findViewById(R.id.IdBtnProximaPergunta);
+        // Bind
+        bemVindo          = findViewById(R.id.tvTitulo);
+        pergunta          = findViewById(R.id.IdtvPergunta);
+        numerodaPergunta  = findViewById(R.id.tvNumeroPergunta);
+        rgRespostas       = findViewById(R.id.rgRespostas);
+        rbResposta1       = findViewById(R.id.rbResposta1);
+        rbResposta2       = findViewById(R.id.rbResposta2);
+        rbResposta3       = findViewById(R.id.rbResposta3);
+        rbResposta4       = findViewById(R.id.rbResposta4);
+        proxima_Pergunta  = findViewById(R.id.btnProxima);
+        cartas            = findViewById(R.id.btnCartas);
 
+        // Popular índices disponíveis (embaralhar perguntas sem repetir)
+        for (int i = 0; i < Perguntas.length; i++) indicesDisponiveis.add(i);
 
-
-        View.OnClickListener clique = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CheckBox clicou = (CheckBox) v;
-                //os ifs pega  cada resposta a qual clicou
-                // e atribu um valor a variavel resposta Selecionada
-                if(v == resposta1)respostaSelecionada = 0;
-                if(v == resposta2)respostaSelecionada = 1;
-                if(v == resposta3)respostaSelecionada = 2;
-                if(v == resposta4)respostaSelecionada = 3;
-                resposta1.setChecked(false);
-                resposta2.setChecked(false);
-                resposta3.setChecked(false);
-                resposta4.setChecked(false);
-
-                clicou.setChecked(true);
-                checkBoxTexto = true;       //pra pegar se selecionao e nao pular
-            }
-        };
-
-        resposta1.setOnClickListener(clique);
-        resposta2.setOnClickListener(clique);
-        resposta3.setOnClickListener(clique);
-        resposta4.setOnClickListener(clique);
-
-
-
-
-        //botao proxima pergunta
-        proxima_Pergunta.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!checkBoxTexto) {
-                    Toast.makeText(getApplicationContext(), "Selecione uma resposta!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                acertoErro();
-                perguntaAtual++;
-                numeroPerguntas--;
-                respostaSelecionada = -1;
-                checkBoxTexto = false;
-
-                if (numeroPerguntas > 0) {
-                    carregar_Perguntas();
-                    if (numeroPerguntas == 1) {
-                        proxima_Pergunta.setText("Finalizar");
-                    }
-                } else {
-                    SharedPreferences preferences = getSharedPreferences(ARQUIVO_USUARIO, 0);
-                    SharedPreferences.Editor editor = preferences.edit();
-                    editor.putInt(PONTUACAO, pontuação);
-                    editor.apply();
-                    Intent intent2 = new Intent(getApplicationContext(), Resultado.class);
-                    startActivity(intent2);
-                    finish();
-                }
-            }
-        }); // fim do botao proxima pergunta
-
-        //botao Cartas
-        cartas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Cartas.class);
-                startActivityForResult(intent, 1);
-                cartaSelecionou = true;
-
-            }
-
+        // Listener de seleção (pega índice 0..3)
+        rgRespostas.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId == R.id.rbResposta1) respostaSelecionada = 0;
+            else if (checkedId == R.id.rbResposta2) respostaSelecionada = 1;
+            else if (checkedId == R.id.rbResposta3) respostaSelecionada = 2;
+            else if (checkedId == R.id.rbResposta4) respostaSelecionada = 3;
         });
 
+        carregarPergunta();
 
+        // Próxima pergunta
+        proxima_Pergunta.setOnClickListener(v -> {
+            if (respostaSelecionada < 0) {
+                Toast.makeText(this, "Selecione uma alternativa!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            acertoErro();
+            numeroPerguntas--;
+            respostaSelecionada = -1;
 
+            if (numeroPerguntas > 0) {
+                carregarPergunta();
+                if (numeroPerguntas == 1) proxima_Pergunta.setText("Finalizar");
+            } else {
+                SharedPreferences preferences = getSharedPreferences(ARQUIVO_USUARIO, 0);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putInt(PONTUACAO, pontuacao);
+                editor.apply();
+                Intent intent2 = new Intent(getApplicationContext(), Resultado.class);
+                startActivity(intent2);
+                finish();
+            }
+        });
+
+        // Cartas (eliminar alternativas erradas)
+        cartas.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), Cartas.class);
+            startActivityForResult(intent, 1);
+            cartaSelecionou = true;
+        });
     }
 
     @Override
@@ -308,95 +273,89 @@ private int cartasRecebidas;
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
-             cartasRecebidas = data.getIntExtra("Carta",-1);
+            cartasRecebidas = data.getIntExtra("Carta", -1);
             cartas.setClickable(false);
             cartas.setAlpha(0.5f);
-
 
             if (cartasRecebidas > 0) {
                 int correta = respostaCerta[perguntaAtual];
 
-                // Array para evitar desativar a mesma resposta mais de uma vez
                 boolean[] desativadas = new boolean[4];
-                desativadas[correta] = true; // não pode desativar a certa
+                desativadas[correta] = true; // não desativa a correta
 
                 Random random = new Random();
                 int eliminadas = 0;
 
                 while (eliminadas < cartasRecebidas) {
-                    int i = random.nextInt(4); // entre 0 e 3
-
+                    int i = random.nextInt(4);
                     if (!desativadas[i]) {
-                        switch (i) {
-                            case 0:
-                                resposta1.setEnabled(false);
-                                resposta1.setAlpha(0.5f); break;
-                            case 1: resposta2.setEnabled(false);
-                                resposta2.setAlpha(0.5f);break;
-                            case 2: resposta3.setEnabled(false);
-                                resposta3.setAlpha(0.5f);break;
-                            case 3: resposta4.setEnabled(false);
-                                resposta4.setAlpha(0.5f);break;
-                        }
+                        RadioButton alvo = getRadioByIndex(i);
+                        alvo.setEnabled(false);
+                        alvo.setAlpha(0.5f);
                         desativadas[i] = true;
                         eliminadas++;
                     }
                 }
             }
-
         }
     }
 
-    //Carregar as perguntas de forma altomatica
-    public void carregar_Perguntas(){
-        resposta1.setEnabled(true);
-        resposta1.setAlpha(1f);
-        resposta2.setEnabled(true);
-        resposta2.setAlpha(1f);
-        resposta3.setEnabled(true);
-        resposta3.setAlpha(1f);
-        resposta4.setEnabled(true);
-        resposta4.setAlpha(1f);
+    private RadioButton getRadioByIndex(int idx) {
+        switch (idx) {
+            case 0: return rbResposta1;
+            case 1: return rbResposta2;
+            case 2: return rbResposta3;
+            case 3: return rbResposta4;
+        }
+        return rbResposta1;
+    }
 
+    // Carrega próxima pergunta aleatória, sem repetir
+    private void carregarPergunta() {
+        // Reset de estado visual
+        habilitarTodas(true);
+        setAlphaTodas(1f);
+        rgRespostas.clearCheck();
+        numerodaPergunta.setText("Pergunta " + (Perguntas.length - indicesDisponiveis.size() + 1) + " de 10");
 
-        resposta1.setChecked(false);
-        resposta2.setChecked(false);
-        resposta3.setChecked(false);
-        resposta4.setChecked(false);
-        checkBoxTexto =false;
-        numerodaPergunta.setText("Pergunta "+ questoes + " de 10");
-        questoes++;
         if (indicesDisponiveis.size() == 0) return;
 
         Random random = new Random();
         int posicao = random.nextInt(indicesDisponiveis.size());
         perguntaAtual = indicesDisponiveis.get(posicao);
-
-        // Remove o índice sorteado da lista
         indicesDisponiveis.remove(posicao);
 
-        //aqui pega as perguntas pela perguntaAtual ai pega certinho de todas é o indice de controle
+        // Seta textos
         pergunta.setText(Perguntas[perguntaAtual]);
-        //as resposta sao matriz porque ai cada linha tem 4 alternativas ai o indice delas e que vai pra cada alternativa
-        resposta1.setText(Respostas[perguntaAtual][0]);
-        resposta2.setText(Respostas[perguntaAtual][1]);
-        resposta3.setText(Respostas[perguntaAtual][2]);
-        resposta4.setText(Respostas[perguntaAtual][3]);
+        rbResposta1.setText(Respostas[perguntaAtual][0]);
+        rbResposta2.setText(Respostas[perguntaAtual][1]);
+        rbResposta3.setText(Respostas[perguntaAtual][2]);
+        rbResposta4.setText(Respostas[perguntaAtual][3]);
 
-
-
-    }//fim metodo carregar_Perguntas
-
-
-    //metodo de acerto e erro
-    public void acertoErro(){
-        if(respostaSelecionada == respostaCerta[perguntaAtual]){
-            pontuação++;
-            String Stringpontuação = String.valueOf(pontuação);
-            //ao pra testes
-            bemVindo.setText(bemVindo.getText().toString());
-        }
+        // Reabilita botão de cartas a cada pergunta
+        cartas.setClickable(true);
+        cartas.setAlpha(1f);
     }
 
+    private void habilitarTodas(boolean enabled) {
+        rbResposta1.setEnabled(enabled);
+        rbResposta2.setEnabled(enabled);
+        rbResposta3.setEnabled(enabled);
+        rbResposta4.setEnabled(enabled);
+    }
 
+    private void setAlphaTodas(float a) {
+        rbResposta1.setAlpha(a);
+        rbResposta2.setAlpha(a);
+        rbResposta3.setAlpha(a);
+        rbResposta4.setAlpha(a);
+    }
+
+    // Verifica acerto e atualiza pontuação
+    private void acertoErro() {
+        if (respostaSelecionada == respostaCerta[perguntaAtual]) {
+            pontuacao++;
+            bemVindo.setText(bemVindo.getText().toString()); // mantém sua lógica original
+        }
+    }
 }
