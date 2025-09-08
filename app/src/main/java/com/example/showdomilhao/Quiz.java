@@ -30,6 +30,7 @@ public class Quiz extends AppCompatActivity {
 
     // Estado
     private boolean cartaSelecionou;
+    private boolean cartaUsada = false;
     private int pontuacao = 0, questoes = 1;
     private int respostaSelecionada = -1; // 0..3
     private int perguntaAtual = 0;
@@ -223,6 +224,11 @@ public class Quiz extends AppCompatActivity {
         proxima_Pergunta  = findViewById(R.id.btnProxima);
         cartas            = findViewById(R.id.btnCartas);
 
+        // Restaurar estado em rotação (opcional)
+        if (savedInstanceState != null) {
+            cartaUsada = savedInstanceState.getBoolean("cartaUsada", false); // 🔒
+        }
+
         // Popular índices disponíveis (embaralhar perguntas sem repetir)
         for (int i = 0; i < Perguntas.length; i++) indicesDisponiveis.add(i);
 
@@ -235,6 +241,7 @@ public class Quiz extends AppCompatActivity {
         });
 
         carregarPergunta();
+        atualizarEstadoBotaoCartas(); // 🔒 aplica regra de 1 uso
 
         // Próxima pergunta
         proxima_Pergunta.setOnClickListener(v -> {
@@ -244,11 +251,9 @@ public class Quiz extends AppCompatActivity {
                 return;
             }
 
-            // Descobre o índice 0..3 a partir do RadioButton marcado
             View marcado = findViewById(checkedId);
             int indiceSelecionado = rgRespostas.indexOfChild(marcado);
 
-            // Usa esse índice para validar
             if (indiceSelecionado == respostaCerta[perguntaAtual]) {
                 pontuacao++;
             }
@@ -266,9 +271,12 @@ public class Quiz extends AppCompatActivity {
             }
         });
 
-
-        // Cartas (eliminar alternativas erradas)
+        // Cartas (eliminar alternativas erradas) — apenas 1 uso no quiz
         cartas.setOnClickListener(v -> {
+            if (cartaUsada) { // 🔒 já foi usada
+                Toast.makeText(this, "Você já usou as cartas nesta partida.", Toast.LENGTH_SHORT).show();
+                return;
+            }
             Intent intent = new Intent(getApplicationContext(), Cartas.class);
             startActivityForResult(intent, 1);
             cartaSelecionou = true;
@@ -281,8 +289,10 @@ public class Quiz extends AppCompatActivity {
 
         if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
             cartasRecebidas = data.getIntExtra("Carta", -1);
-            cartas.setClickable(false);
-            cartas.setAlpha(0.5f);
+
+            // 🔒 marca como usada e aplica visual/bloqueio
+            cartaUsada = true;
+            atualizarEstadoBotaoCartas();
 
             if (cartasRecebidas > 0) {
                 int correta = respostaCerta[perguntaAtual];
@@ -300,8 +310,7 @@ public class Quiz extends AppCompatActivity {
 
                         // Se a alternativa a eliminar está marcada, desmarque tudo
                         if (alvo.isChecked()) {
-                            rgRespostas.clearCheck();       // 🔑 limpa seleção
-                            // respostaSelecionada = -1;    // (se mantiver a variável)
+                            rgRespostas.clearCheck();
                         }
 
                         alvo.setEnabled(false);
@@ -310,7 +319,6 @@ public class Quiz extends AppCompatActivity {
                         eliminadas++;
                     }
                 }
-
             }
         }
     }
@@ -330,8 +338,7 @@ public class Quiz extends AppCompatActivity {
         // Reset visual/estado SEMPRE que entrar em nova pergunta
         habilitarTodas(true);
         setAlphaTodas(1f);
-        rgRespostas.clearCheck();        // 🔑 nada marcado
-        // respostaSelecionada = -1;     // (apenas se você mantiver essa variável)
+        rgRespostas.clearCheck();
 
         numerodaPergunta.setText(
                 "Pergunta " + (Perguntas.length - indicesDisponiveis.size() + 1) + " de 10"
@@ -350,10 +357,20 @@ public class Quiz extends AppCompatActivity {
         rbResposta3.setText(Respostas[perguntaAtual][2]);
         rbResposta4.setText(Respostas[perguntaAtual][3]);
 
-        cartas.setClickable(true);
-        cartas.setAlpha(1f);
+        // 🔒 aplica regra global de 1 uso (não reabilita se já usou)
+        atualizarEstadoBotaoCartas();
     }
 
+    private void atualizarEstadoBotaoCartas() {
+        if (cartas == null) return;
+        if (cartaUsada) {
+            cartas.setClickable(false);
+            cartas.setAlpha(0.5f);
+        } else {
+            cartas.setClickable(true);
+            cartas.setAlpha(1f);
+        }
+    }
 
     private void habilitarTodas(boolean enabled) {
         rbResposta1.setEnabled(enabled);
@@ -369,11 +386,18 @@ public class Quiz extends AppCompatActivity {
         rbResposta4.setAlpha(a);
     }
 
-    // Verifica acerto e atualiza pontuação
+    // Verifica acerto e atualiza pontuação (não está sendo usada no fluxo atual)
     private void acertoErro() {
         if (respostaSelecionada == respostaCerta[perguntaAtual]) {
             pontuacao++;
-            bemVindo.setText(bemVindo.getText().toString()); // mantém sua lógica original
+            bemVindo.setText(bemVindo.getText().toString());
         }
+    }
+
+    // 🔒 persiste o estado se a tela girar
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean("cartaUsada", cartaUsada);
     }
 }
